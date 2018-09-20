@@ -61,6 +61,11 @@ int main() {
 check_include_file_cxx(cxxabi.h CPPUNIT_HAVE_GCC_ABI_DEMANGLE)
 #Not used HAVE_INTTYPES_H
 
+if(NOT NO_CXX11 AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ")
+endif()
+
+
 check_c_source_compiles(
 "#include <math.h>
 int main() {
